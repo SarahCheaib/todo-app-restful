@@ -13,7 +13,14 @@ app.use(express.static(path.join(application_root, './', 'site')));
 app.use(bodyParser());
 
 //Start server
-var port = 4711;
+var port = process.env.PORT || 4711;
+
+// Here we find an appropriate database to connect to, defaulting to
+// localhost if we don't find one.
+var uristring =
+    process.env.MONGOLAB_URI ||
+    process.env.MONGOHQ_URL ||
+    'mongodb://127.0.0.1/todo_app';
 
 app.listen(port, function () {
     console.log('Express server listening on port %d in %s mode', port, app.settings.env);
@@ -25,7 +32,14 @@ app.get('/api', function (request, response) {
 });
 
 //Connect to database
-mongoose.connect('mongodb://127.0.0.1/todo_app');
+mongoose.connect(uristring, function (err, res) {
+    if (err) {
+        console.log ('ERROR connecting to: ' + uristring + '. ' + err);
+    } else {
+        console.log ('Succeeded connected to: ' + uristring);
+    }
+});
+//mongoose.connect('mongodb://127.0.0.1/todo_app');
 
 //Schemas
 var Task = new mongoose.Schema({
