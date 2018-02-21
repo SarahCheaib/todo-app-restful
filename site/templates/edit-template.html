@@ -1,0 +1,24 @@
+<form class="edit-todo">
+    <ul class="menu-list todo-list">
+        <li class="edit-open edit-mode">
+            <label>
+                <input type="text" name="name" value="<%- task ? task.get('name') : '' %>">
+                <input type="hidden" name="done" value="<%- task ? task.get('done') : '' %>">
+            </label>
+        </li>
+    </ul>
+    <ul class="menu-list footer-list">
+        <li class="add-btn">
+            <button type="submit"><%- task ? 'Aktualisieren' : 'Erstellen' %></button>
+        </li>
+        <li>
+            <a class="footer-button" href="#">Abbrechen</a>
+        </li>
+        <% if (task) { %>
+        <li class="detele-btn">
+            <input type="hidden" name="id" value="<%= task.id %>">
+            <button type="button" class="delete-btn">Löschen</button>
+        </li>
+        <% }; %>
+    </ul>
+</form>

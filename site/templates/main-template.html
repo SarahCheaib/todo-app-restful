@@ -1,0 +1,26 @@
+<form class="todo-list">
+    <ul class="menu-list todo-list">
+        <% _.each(tasks, function(task) {
+        console.log(task.get('done')); %>
+        <li>
+            <input class="styledCB" id="<%=task.id %>" <% if (task.get('done') == true) { %> checked <% }; %>
+            type="checkbox" />
+            <label for="<%=task.id %>">
+                <span></span>
+                <input type="text" name="name" value="<%=task.get('name')%>">
+            </label>
+            <ul class="item-menu-bar">
+                <li class="edit-btn"><a href="#/edit/<%=task.id %>">Editieren</a></li>
+            </ul>
+        </li>
+        <% }); %>
+    </ul>
+    <ul class="menu-list footer-list">
+        <li class="create-btn">
+            <a class="footer-button" href="#/new">Neue Aufgabe</a>
+        </li>
+        <li class="clear-done-btn">
+            <a class="footer-button" href="#/deleteDone"> Erledigte löschen</a>
+        </li>
+    </ul>
+</form>

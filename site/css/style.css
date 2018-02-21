@@ -1,0 +1,293 @@
+/*reset code*/
+
+body {
+    background: #e9e9e8;
+}
+
+#todo-app {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    position: relative;
+    text-align: center;
+    max-width: 440px;
+    min-width: 350px;
+    margin: 50px auto;
+    background: #e9e9e8;
+}
+
+#todo-app ul {
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+#todo-app ul li {
+    list-style: none;
+}
+
+#todo-app ul.menu-list > li {
+    list-style: none;
+    width: 35%;
+
+    padding: 10px 5px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#todo-app ul.footer-list {
+    display: inline-block;
+}
+
+#todo-app ul.footer-list li {
+    width: auto;
+    font-size: 12px;
+    padding: 0;
+    float: left;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 40px;
+
+    border: 1px solid #B1D1DC;
+    -webkit-box-shadow: 2px 2px 7px -2px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 2px 2px 7px -2px rgba(0, 0, 0, 0.2);
+    box-shadow: 2px 2px 7px -2px rgba(0, 0, 0, 0.2);
+
+    background: #ADD8E6;
+}
+
+
+#todo-app a.footer-button, #todo-app button {
+    text-decoration: none;
+    display:block;
+    color: initial;
+    padding: 5px 15px;
+    border: none;
+    background: transparent;
+    margin: 0;
+    font-size: 12px;
+    font-weight: normal;
+    cursor: pointer;
+}
+
+#todo-app ul.footer-list li.down {
+    -webkit-box-shadow: 2px 2px 3px -2px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 2px 2px 3px -2px rgba(0, 0, 0, 0.2);
+    box-shadow: 2px 2px 3px -2px rgba(0, 0, 0, 0.2);
+    margin-top: 6px;
+    background: #A8D2E0;
+}
+
+#todo-app ul.footer-list li.disabled {
+    -webkit-box-shadow: 2px 2px 3px -2px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 2px 2px 3px -2px rgba(0, 0, 0, 0.2);
+    box-shadow: 2px 2px 3px -2px rgba(0, 0, 0, 0.2);
+    background: #A8D2E0;
+    opacity: .7;
+    pointer-events: none;
+}
+
+#todo-app ul {
+    margin-bottom: 30px;
+}
+
+#todo-app #header {
+    color: black;
+    text-align: center;
+    width: 60%;
+    margin: 0 auto;
+}
+
+#todo-app .headline {
+    font-size: 24px;
+    /*color: white;*/
+    text-align: center;
+    font-weight: 300;
+    padding: 10px 0;
+    margin: 0 0 25px 0;
+}
+
+#todo-app ul.todo-list.editable > li .icon:hover {
+    opacity: .7;
+}
+
+#todo-app ul.todo-list.editable > li .icon.duplicate-btn {
+    background-image: url("../images/duplicate.png");
+    right: 38px;
+    width: 20px;
+}
+
+#todo-app ul.todo-list.editable > li .icon.edit-btn {
+    background-image: url("../images/edit.png");
+    right: 66px;
+    width: 27px;
+}
+
+#todo-app ul.todo-list.editable > li .icon.remove-btn {
+    background-image: url("../images/delete.png");
+    right: 5px;
+    width: 23px;
+}
+
+#todo-app ul.todo-list.editable > li .icon {
+    height: 100%;
+    width: 23px;
+
+    background-size: contain;
+    position: absolute;
+
+    top: 0;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-position: right center;
+}
+
+#todo-app ul.todo-list .item-menu-bar li:hover {
+    color: black;
+}
+
+#todo-app ul.todo-list .item-menu-bar li {
+    position: relative;
+    float: left;
+    padding: 5px;
+    cursor: pointer;
+}
+
+#todo-app ul.todo-list > li .item-menu-bar {
+    float: right;
+    padding: 3px;
+    font-size: 12px;
+}
+
+#todo-app ul.todo-list > li .arrow-btn {
+    background-size: contain;
+    position: absolute;
+    padding-top: 7px;
+    top: 0;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-image: url("../images/arrow_down.png");
+    height: 45px;
+    right: 25px;
+    width: 16px;
+}
+
+/*#todo-app ul.todo-list:not(.editable) > li:hover {
+    background-color: #fc9d9d;
+}*/
+
+#todo-app ul.todo-list > li:not(.edit-mode) input[type="text"] {
+    pointer-events: none;
+}
+
+#todo-app ul.todo-list > li.edit-mode {
+    background: #819aa3 !important;
+}
+
+#todo-app ul.todo-list > li {
+    position: relative;
+    height: 45px;
+    box-sizing: border-box;
+    background: #057a57;
+    color: white;
+    padding: 10px;
+    text-align: left;
+    width: 100%;
+    font-size: 17px;
+    font-weight: 300;
+    overflow: hidden;
+}
+
+#todo-app ul.todo-list > li:nth-child(1) {
+    background: #71c7ac;
+}
+
+#todo-app ul.todo-list > li:nth-child(2) {
+    background: #5eb79d;
+}
+
+#todo-app ul.todo-list > li:nth-child(3) {
+    background: #3ab08e;
+}
+
+#todo-app ul.todo-list > li:nth-child(4) {
+    background: #0eae82;
+}
+
+#todo-app ul.todo-list > li:nth-child(5) {
+    background: #09a277;
+}
+
+#todo-app ul.todo-list > li:nth-child(6) {
+    background: #06986f;
+}
+
+#todo-app ul.todo-list > li:nth-child(7) {
+    background: #029168;
+}
+
+#todo-app ul.todo-list > li:nth-child(8) {
+    background: #028761;
+}
+
+#todo-app ul.todo-list > li:nth-child(9) {
+    background: #07825d;
+}
+
+#todo-app ul.todo-list > li:nth-child(10) {
+    background: #057a57;
+}
+
+#todo-app ul.todo-list > li label {
+    width: 80%;
+    display: inline-block;
+    cursor: pointer;
+}
+
+#todo-app input[type="checkbox"] + label input[type="text"], #todo-app form.edit-todo label input[type="text"] {
+    width: 83%;
+    padding: 5px;
+    line-height: 1em;
+    height: 1em;
+}
+
+#todo-app input[type="text"] {
+    -webkit-appearance: none;
+    background: none;
+    border: none;
+    font-size: inherit;
+    font-weight: inherit;
+    font-family: inherit;
+    color: inherit;
+}
+
+/*checkbox style*/
+
+input[type="checkbox"].styledCB {
+    display: none;
+}
+
+input[type="checkbox"]:not(.styledCB) {
+    display: block;
+    float: left;
+    height: 100%;
+}
+
+input[type="checkbox"]:not(.styledCB) + label {
+    width: 80% !important;
+}
+
+input[type="checkbox"] + label span {
+    display: inline-block;
+    width: 19px;
+    height: 19px;
+    margin: -1px 4px 0 0;
+    vertical-align: middle;
+    background: url(../images/check_radio_sheet.png) left top no-repeat;
+    cursor: pointer;
+}
+
+input[type="checkbox"]:checked + label span {
+    background: url(../images/check_radio_sheet.png) -19px top no-repeat;
+}
