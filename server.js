@@ -22,6 +22,8 @@ var uristring =
     process.env.MONGOHQ_URL ||
     'mongodb://127.0.0.1/todo_app';
 
+
+console.log ('Trying to make express app listen to port: ' + port);
 app.listen(port, function () {
     console.log('Express server listening on port %d in %s mode', port, app.settings.env);
 });
@@ -30,6 +32,8 @@ app.listen(port, function () {
 app.get('/api', function (request, response) {
     response.send('TODO API is running');
 });
+
+console.log ('Trying to connect mongoose to: ' + uristring);
 
 //Connect to database
 mongoose.connect(uristring, function (err, res) {
