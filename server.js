@@ -18,8 +18,7 @@ var port = process.env.PORT || 4711;
 // Here we find an appropriate database to connect to, defaulting to
 // localhost if we don't find one.
 var uristring =
-    process.env.MONGOLAB_URI ||
-    process.env.MONGOHQ_URL ||
+    process.env.MONGODB_URI ||
     'mongodb://127.0.0.1/todo_app';
 
 
