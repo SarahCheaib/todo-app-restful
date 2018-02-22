@@ -25,10 +25,10 @@ define([
             this.listenTo(this.tasks, "add", this.render);
             this.listenTo(this.tasks, "reset", this.render);
 
-
             return this;
         },
         render: function () {
+            console.log("new render");
             var compiledTemplate = _.template(template);      //template is the loaded HTML template
             var t = compiledTemplate({tasks: this.tasks.models});
             this.$el.html(t);
@@ -42,16 +42,8 @@ define([
         },
         deleteDoneTasks: function () {
             var router = this.options.router;
-            var numTasksToDestroy = this.tasks.where({done: true}).length;
-            if (numTasksToDestroy == 0) {
-                router.navigate('', {trigger: true});
-                return;
-            }
-            console.log(numTasksToDestroy);
-            this.listenTo(this.tasks, "destroy", function () {
-                numTasksToDestroy--;
-                console.log(numTasksToDestroy);
-                if (numTasksToDestroy == 0) router.navigate('', {trigger: true});
+            this.listenTo(this.tasks, "destroyedDoneComplete", function () {
+               router.navigate('', {trigger: true});
             });
 
             this.tasks.destroyDoneTasks();
