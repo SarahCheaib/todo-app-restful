@@ -10,8 +10,7 @@ var app = express();
 
 //Where to serve static content
 app.use(express.static(path.join(application_root, './', 'site')));
-app.use(bodyParser());
-
+app.use(bodyParser.json());
 //Start server
 var port = process.env.PORT || 4711;
 
@@ -22,7 +21,7 @@ var uristring =
     'mongodb://127.0.0.1/todo_app';
 
 
-console.log ('Trying to make express app listen to port: ' + port);
+console.log ('Trying to make express app listen to port: ' + port + " ...");
 app.listen(port, function () {
     console.log('Express server listening on port %d in %s mode', port, app.settings.env);
 });
@@ -42,7 +41,6 @@ mongoose.connect(uristring, function (err, res) {
         console.log ('Succeeded connected to: ' + uristring);
     }
 });
-//mongoose.connect('mongodb://127.0.0.1/todo_app');
 
 //Schemas
 var Task = new mongoose.Schema({
