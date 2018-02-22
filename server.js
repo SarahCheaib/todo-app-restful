@@ -138,10 +138,10 @@ app.put('/api/tasks/:id', function (request, response) {
 app.delete('/api/tasks/:id', function (request, response) {
     console.log('Deleting the Task with ID: ' + request.params.id);
     return TaskModel.findById(request.params.id, function (err, task) {
-        return task.remove(function () {
+        return task.remove(function (err) {
             if (!err) {
-                console.log('Task removed');
-                return response.send('');
+                console.log("Task removed");
+                return response.send(task);
             } else {
                 console.log(err);
             }
