@@ -19,6 +19,8 @@ define([
                 reset: true
             });
 
+            console.log("fetch tasks from main view");
+
             this.listenTo(this.tasks, "change", this.render);
             this.listenTo(this.tasks, "add", this.render);
             this.listenTo(this.tasks, "reset", this.render);
@@ -45,8 +47,10 @@ define([
                 router.navigate('', {trigger: true});
                 return;
             }
+            console.log(numTasksToDestroy);
             this.listenTo(this.tasks, "destroy", function () {
                 numTasksToDestroy--;
+                console.log(numTasksToDestroy);
                 if (numTasksToDestroy == 0) router.navigate('', {trigger: true});
             });
 
