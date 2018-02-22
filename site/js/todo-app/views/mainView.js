@@ -22,7 +22,7 @@ define([
             this.listenTo(this.tasks, "change", this.render);
             this.listenTo(this.tasks, "add", this.render);
             this.listenTo(this.tasks, "reset", this.render);
-            this.listenTo(this.tasks, "destroy", this.render);
+
 
             return this;
         },
@@ -39,6 +39,17 @@ define([
             return false;
         },
         deleteDoneTasks: function () {
+            var router = this.options.router;
+            var numTasksToDestroy = this.tasks.where({done: true}).length;
+            if (numTasksToDestroy == 0) {
+                router.navigate('', {trigger: true});
+                return;
+            }
+            this.listenTo(this.tasks, "destroy", function () {
+                numTasksToDestroy--;
+                if (numTasksToDestroy == 0) router.navigate('', {trigger: true});
+            });
+
             this.tasks.destroyDoneTasks();
         },
         kill: function () {
