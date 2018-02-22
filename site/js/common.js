@@ -15,8 +15,7 @@ requirejs.config({
         ],
         //set libraries alias (placed in baseURL folder)
         underscore: 'underscore-min',
-        backbone: 'backbone-min' ,
-        localstorage: "backbone.localStorage"
+        backbone: 'backbone-min'
     }
 });
 

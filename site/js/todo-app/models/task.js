@@ -1,8 +1,7 @@
 define([
     'underscore',
-    'backbone',
-    'localstorage'
-], function (_, Backbone, LocalStorage) {
+    'backbone'
+], function (_, Backbone) {
     var Task = Backbone.Model.extend({
         parse: function( response ) {
             response.id = response._id;

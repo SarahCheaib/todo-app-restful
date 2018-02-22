@@ -1,9 +1,8 @@
 define([
     'underscore',
     'backbone',
-    'localstorage',
     'app/models/task'
-], function (_, Backbone, LocalStorage, TaskModel) {
+], function (_, Backbone, TaskModel) {
     var Tasks = Backbone.Collection.extend({
         model: TaskModel,
         url: '/api/tasks',
