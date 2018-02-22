@@ -9,7 +9,7 @@ var application_root = __dirname,
 var app = express();
 
 //Where to serve static content
-app.use(express.static(path.join(application_root, './', 'site')));
+app.use(express.static(path.join(application_root, '../', 'site')));
 app.use(bodyParser.json());
 //Start server
 var port = process.env.PORT || 4711;
@@ -26,11 +26,6 @@ app.listen(port, function () {
     console.log('Express server listening on port %d in %s mode', port, app.settings.env);
 });
 
-// Routes
-app.get('/api', function (request, response) {
-    response.send('TODO API is running');
-});
-
 console.log ('Trying to connect mongoose to: ' + uristring);
 
 //Connect to database
@@ -41,6 +36,8 @@ mongoose.connect(uristring, function (err, res) {
         console.log ('Succeeded connected to: ' + uristring);
     }
 });
+
+
 
 //Schemas
 var Task = new mongoose.Schema({
@@ -68,6 +65,11 @@ app.configure(function () {
 
     //Show all errors in development
     app.use(express.errorHandler({dumpExceptions: true, showStack: true}));
+});
+
+// Routes
+app.get('/api', function (request, response) {
+    response.send('TODO API is running');
 });
 
 
