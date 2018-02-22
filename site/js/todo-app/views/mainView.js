@@ -22,10 +22,8 @@ define([
 
             this.listenTo(this.tasks, "change", this.render);
             this.listenTo(this.tasks, "add", this.render);
-            this.listenTo(this.tasks, "destroy", function() {
-                console.log("destroying a task callback...");
-            });
             this.listenTo(this.tasks, "reset", this.render);
+            this.listenTo(this.tasks, "destroy", this.render);
 
             return this;
         },
@@ -44,9 +42,9 @@ define([
         },
         deleteDoneTasks: function () {
             var _this = this;
-            this.listenTo(this.tasks, 'destroyedComplete', function () {
+          /*  this.listenTo(this.tasks, 'destroyedComplete', function () {
                 _this.options.router.navigate('', {trigger: true});
-            });
+            });*/
 
             this.tasks.destroyDoneTasks();
         },
