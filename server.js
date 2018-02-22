@@ -9,7 +9,7 @@ var application_root = __dirname,
 var app = express();
 
 //Where to serve static content
-app.use(express.static(path.join(application_root, '../', 'site')));
+app.use(express.static(path.join(application_root, './', 'site')));
 app.use(bodyParser.json())  // support json encoded bodies
     .use(bodyParser.urlencoded({extended: true})); // support encoded bodies
 
