@@ -15,7 +15,6 @@ define([
         initialize: function (options) {
             this.options = options;
             this.tasks = new Tasks();
-            var _this = this;
 
             this.listenTo(this.tasks, "reset", this.render);
             this.listenTo(this.tasks, "change", this.render);
@@ -33,7 +32,6 @@ define([
             }
 
             var compiledTemplate = _.template(template);
-            console.log("render task?", this.task);
             var t = compiledTemplate({task: this.task});
             this.$el.html(t);
 
@@ -41,7 +39,7 @@ define([
 
             $input.focus();
 
-            //workaround to set cursor to end of word
+            //hack to set cursor to end of word
             var tmpStr = $input.val();
             $input.val('');
             $input.val(tmpStr);
@@ -49,17 +47,18 @@ define([
         saveTODO: function (e) {
             var details = $(e.currentTarget).serializeObject();
             details.done = details.done == "true" ? true : false; //fix to save done property as a boolean, not a string
-            var _this = this;
-            if (!this.task) {
+
+            var router = this.options.router;
+            if (!this.task) {   //create new task
                 this.tasks.create(details, {
                     success: function () {
-                        _this.options.router.navigate('', {trigger: true});
+                        router.navigate('', {trigger: true});
                     }
                 });
-            } else {
+            } else { //save task changes
                 this.task.save(details, {
                     success: function () {
-                        _this.options.router.navigate('', {trigger: true});
+                        router.navigate('', {trigger: true});
                     }
                 });
             }
@@ -67,9 +66,8 @@ define([
             return false;
         },
         deleteTODO: function (e) {
-            var _this = this;
             this.task.destroy();
-            _this.options.router.navigate('', {trigger: true});
+            this.options.router.navigate('', {trigger: true});
         },
         kill: function () {
             this.stopListening();

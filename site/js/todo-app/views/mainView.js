@@ -14,10 +14,9 @@ define([
         initialize: function (options) {
             this.options = options;
             this.tasks = new Tasks();
-            var _this = this;
 
             this.tasks.fetch({
-                reset:true
+                reset: true
             });
 
             this.listenTo(this.tasks, "change", this.render);
@@ -34,18 +33,12 @@ define([
             return this;
         },
         saveState: function (e) {
-            var task = this.tasks.get($(e.currentTarget).attr('id'));
-            var checked = $(e.currentTarget)[0].checked;
-
-            task.save({'done': checked});
+            var $targEl = $(e.currentTarget); //clicked checkbox
+            var task = this.tasks.get($targEl.attr('id'));
+            task.save({'done': $targEl[0].checked}); //save new checked state
             return false;
         },
         deleteDoneTasks: function () {
-            var _this = this;
-          /*  this.listenTo(this.tasks, 'destroyedComplete', function () {
-                _this.options.router.navigate('', {trigger: true});
-            });*/
-
             this.tasks.destroyDoneTasks();
         },
         kill: function () {
