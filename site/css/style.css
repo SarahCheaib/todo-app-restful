@@ -56,10 +56,9 @@ body {
     background: #ADD8E6;
 }
 
-
 #todo-app a.footer-button, #todo-app button {
     text-decoration: none;
-    display:block;
+    display: block;
     color: initial;
     padding: 5px 15px;
     border: none;
@@ -290,4 +289,23 @@ input[type="checkbox"] + label span {
 
 input[type="checkbox"]:checked + label span {
     background: url(../images/check_radio_sheet.png) -19px top no-repeat;
+}
+
+/*responsive*/
+@media only screen and (max-width: 800px) {
+    #todo-app {
+        min-width: 0;
+    }
+
+    #todo-app ul.todo-list .item-menu-bar li {
+        padding: 5px 0;
+    }
+
+    #todo-app form.edit-todo label input[type="text"] {
+        width: 100%;
+    }
+
+    #todo-app ul.todo-list > li.edit-mode label {
+        width: 95%;
+    }
 }
