@@ -10,6 +10,9 @@ define([
             var _this = this;
             var completedTasks = this.where({done: true});   //returns array of completed tasks
             var doneTasks = completedTasks.length;  //number of completed tasks to destroy
+            if (doneTasks == 0) {        //if all tasks destroyed
+                _this.trigger('destroyedDoneComplete');  //trigger custom event
+            }
             completedTasks.forEach(function (task) {
                 task.destroy({
                     success: function () {
