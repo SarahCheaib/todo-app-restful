@@ -15,9 +15,7 @@ define([
             this.options = options;
             this.tasks = new Tasks();
 
-            this.tasks.fetch({
-                reset: true
-            });
+            this.tasks.fetch();
 
             console.log("fetch tasks from main view");
 
