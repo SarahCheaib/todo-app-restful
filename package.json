@@ -4,9 +4,8 @@
   "description": "A simple todo application using Backbone",
   "start": "node server.js",
   "dependencies": {
-    "express": "~3.1.0",
-    "path": "~0.4.9",
-    "mongoose": "~5.0.6",
+    "express": "^4.15.2",
+    "mongoose": "^5.0.7",
     "body-parser": "~1.9.1"
   }
 }

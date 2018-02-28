@@ -2,16 +2,14 @@
 var application_root = __dirname,
     express = require('express'), //Web framework
     bodyParser = require('body-parser'), //Parser for reading request bodysudo service mongodb stopsudo service mongodb stop
-    path = require('path'), //Utilities for dealing with file paths,
-    mongoose = require('mongoose'); //MongoDB integration
+    mongoose = require('mongoose'); //MongoDB integration with Mongoose
 
 //Create server
 var app = express();
 
 //Where to serve static content
-app.use(express.static(path.join(application_root, './', 'site')));
-app.use(bodyParser.json())  // support json encoded bodies
-    .use(bodyParser.urlencoded({extended: true})); // support encoded bodies
+app.use(express.static(application_root + '/site'));
+app.use(bodyParser.json());  // support json encoded bodies
 
 //Start server
 var port = process.env.PORT || 4711;
@@ -49,24 +47,6 @@ var Task = new mongoose.Schema({
 
 //Models
 var TaskModel = mongoose.model('Task', Task);
-
-//Configure Server
-app.configure(function () {
-    //parses request body and populates request.body
-    app.use(express.bodyParser());
-
-    //checks request.body for HTTP method overrides
-    app.use(express.methodOverride());
-
-    //perform route lookup
-    app.use(app.router);
-
-    //Where to serve static content
-    app.use(express.static(path.join(application_root, './', 'site')));
-
-    //Show all errors in development
-    app.use(express.errorHandler({dumpExceptions: true, showStack: true}));
-});
 
 // Routes
 app.get('/api', function (request, response) {
@@ -149,6 +129,17 @@ app.delete('/api/tasks/:id', function (request, response) {
     });
 });
 
+app.delete('/api/destroyDoneTasks', function (request, response) {
+    return TaskModel.deleteMany({done: true}, function (err) {
+        if (!err) {
+            console.log("Task removed");
+            return response.send(true);
+        } else {
+            console.log(err);
+        }
+    });
+});
+
 
 //REST API TEST CALLS FROM CONSOLE
 /*
@@ -216,5 +207,16 @@ jQuery.ajax({
     }
 });
 
+//delete done tasks
+jQuery.ajax({
+    url: '/api/destroyDoneTasks',
+    type: 'DELETE',
+    success: function( data, textStatus, jqXHR ) {
+        console.log( 'Delete response:' );
+        console.dir( data );
+        console.log( textStatus );
+        console.dir( jqXHR );
+    }
+});
 
 */
