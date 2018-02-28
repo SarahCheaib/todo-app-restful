@@ -1,7 +1,7 @@
 // Module dependencies.
 var application_root = __dirname,
     express = require('express'), //Web framework
-    bodyParser = require('body-parser'), //Parser for reading request bodysudo service mongodb stopsudo service mongodb stop
+    bodyParser = require('body-parser'), //Parser for reading request body
     mongoose = require('mongoose'); //MongoDB integration with Mongoose
 
 //Create server
