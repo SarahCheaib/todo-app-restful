@@ -1,7 +1,7 @@
 {
   "name": "backbone-todo",
   "version": "0.0.1",
-  "description": "A simple todo application using Backbone",
+  "description": "RMA Demo Todo application using Backbone",
   "dependencies": {
     "express": "^4.15.2",
     "mongoose": "^5.0.7",
