@@ -66,8 +66,12 @@ define([
             return false;
         },
         deleteTODO: function (e) {
-            this.task.destroy();
-            this.options.router.navigate('', {trigger: true});
+            var router = this.options.router;
+            this.task.destroy({
+                success: function (model, response) {
+                    router.navigate('', {trigger: true});
+                }
+            });
         },
         kill: function () {
             this.stopListening();

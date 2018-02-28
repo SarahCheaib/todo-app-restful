@@ -21,7 +21,6 @@ define([
 
             this.listenTo(this.tasks, "change", this.render);
             this.listenTo(this.tasks, "add", this.render);
-            this.listenTo(this.tasks, "reset", this.render);
 
             return this;
         },
