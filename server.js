@@ -12,7 +12,7 @@ app.use(express.static(application_root + '/site'));
 app.use(bodyParser.json());  // support json encoded bodies
 
 //Start server
-var port = process.env.PORT || 4711;
+var port = process.env.PORT || 8080;
 
 // Here we find an appropriate database to connect to, defaulting to
 // localhost if we don't find one.
@@ -41,8 +41,7 @@ mongoose.connect(uristring, function (err, res) {
 //Schemas
 var Task = new mongoose.Schema({
     name: String,
-    done: Boolean,
-    date: Date
+    done: Boolean
 });
 
 //Models
@@ -69,8 +68,7 @@ app.get('/api/tasks', function (request, response) {
 app.post('/api/tasks', function (request, response) {
     var task = new TaskModel({
         name: request.body.name,
-        done: request.body.done,
-        date: request.body.date
+        done: request.body.done
     });
 
     return task.save(function (err) {

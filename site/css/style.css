@@ -86,7 +86,7 @@ body {
     pointer-events: none;
 }
 
-#todo-app ul {
+#todo-app ul.menu-list {
     margin-bottom: 30px;
 }
 
@@ -153,9 +153,11 @@ body {
 }
 
 #todo-app ul.todo-list > li .item-menu-bar {
-    float: right;
+    position: absolute;
     padding: 3px;
     font-size: 12px;
+    right: 10px;
+    top: 10px;
 }
 
 #todo-app ul.todo-list > li .arrow-btn {
@@ -186,7 +188,7 @@ body {
 
 #todo-app ul.todo-list > li {
     position: relative;
-    height: 45px;
+    height: auto;
     box-sizing: border-box;
     background: #057a57;
     color: white;
@@ -238,10 +240,16 @@ body {
     background: #057a57;
 }
 
-#todo-app ul.todo-list > li label {
+#todo-app ul.todo-list > li label, #todo-app ul.todo-list > li > div {
     width: 80%;
     display: inline-block;
     cursor: pointer;
+}
+
+
+#todo-app ul.todo-list > li > div > span {
+    padding-left: 31px;
+    font-size: 13px;
 }
 
 #todo-app input[type="checkbox"] + label input[type="text"], #todo-app form.edit-todo label input[type="text"] {
@@ -308,4 +316,12 @@ input[type="checkbox"]:checked + label span {
     #todo-app ul.todo-list > li.edit-mode label {
         width: 95%;
     }
+}
+
+#todo-app input[type="text"]#datepicker  {
+    background: #ADD8E6;
+    border-radius: 3px;
+    padding: 5px;
+    margin-left: 5px;
+    color: black;
 }

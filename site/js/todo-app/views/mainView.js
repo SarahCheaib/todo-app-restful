@@ -15,12 +15,12 @@ define([
             this.options = options;
             this.tasks = new Tasks();
 
-            this.tasks.fetch();
-
+            this.tasks.fetch({reset: true});
             console.log("fetch tasks from main view");
 
             this.listenTo(this.tasks, "change", this.render);
             this.listenTo(this.tasks, "add", this.render);
+            this.listenTo(this.tasks, "reset", this.render);
 
             return this;
         },
